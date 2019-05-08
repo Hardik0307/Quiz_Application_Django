@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load staticfiles%}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+  <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+<!--  <link rel="stylesheet" type="text/javascript" href="{% static 'js/bootstrap.min.js' %}" >-->
+</head>
+<body>
+  <div class="container">
+{% if error %}
+			<p style="color: red;">Wrong Credintials</p>
+		{%endif %}	
+		{% if error == 0 %}
+			<p class="alert alert-success">DATA STORED IN DB</p> 
+       <p><span class="glyphicon glyphicon-chevron-right  "> 
+       <a href="/login_redirect/" class="btn btn-success"> Login</a> </span> </p> 
+      
+		{%endif %}
+			<!--<a href="/login_redirect/">Login</a>-->
+			<div class="well" style="font-size:  x-large;">Sign Up</div><hr/>
+			<form action="/signup/" method="POST" >{% csrf_token %}
+  				<div class="form-group">
+    				<label for="Username">Username</label>
+    				<input type="text" class="form-control" minlength="6" maxlength="15" id="Username" name="uname" placeholder="Enter Username" required />
+ 			 	</div>
+ 			 	<div class="form-group">
+    				<label for="pass">Password</label>
+    				<input type="password" minlength="6" maxlength="15" class="form-control" id="pass" name="pass" placeholder="Password" required/>
+  				</div>
+  				<div class="form-group">
+    				<label for="pass1">Password</label>
+    				<input type="password" minlength="6" maxlength="15" class="form-control" id="pass1" name="pass1" placeholder="Re Password" required/>
+  				</div>
+  				<div class="form-group">
+    				<label for="mail">Email</label>
+    				<input type="email"  maxlength="70" class="form-control" id="mail" name="mail" placeholder="Enter Email" required/>
+  				</div>
+    				    Select  Player <input type="radio"  name="Master" value="Player" required/>
+  			<center>	
+  			<button type="submit" class="btn btn-primary" name="sub" value="sub">Submit</button>
+        <a href="/" class="btn btn-primary" >Home Page</a>  
+      </center></center>
+			</form>
+    </div>
+    </div>
+  </body>
+  </html>

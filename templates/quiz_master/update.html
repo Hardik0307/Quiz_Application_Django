@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="alert alert-info"><h2><center>Updation</center></h2>
+			<p><i>Update Question,Options or answer as per your requirenments.</i></p>
+		</div>
+		<form action="/../quiz_master/update/" method="POST">{% csrf_token %}
+			<input type="hidden" value="{{Que.question}}" name="pk">
+			<div class="well">
+				<span class="label label-success">QUESTION</span>
+				<textarea class="form-control" name="que" rows="2" cols="5"></textarea>
+				Here --{{Que.question}}
+				<br>
+					<span class="label label-info"> A) </span> 
+						<input type="text" name="op1"> Previous value -- {{Que.op1}} <br>
+					<span class="label label-info"> B) </span> 
+						<input type="text" name="op2"> Previous value -- {{Que.op2}} <br>
+					<span class="label label-info"> C) </span>
+						<input type="text" name="op3"> Previous value -- {{Que.op3}} <br>
+					<span class="label label-info"> D) </span> 
+						<input type="text" name="op4"> Previous value -- {{Que.op4}} <br>
+					<hr>	
+					<span class="label label-info">ANSWER </span>
+						<input type="text" name="ans" value="{{Que.ans}}">
+					<span class="label label-info">WEIGHTAGE</span>
+						<input type="text" name="weight" value="{{Que.weightage}}">			
+			</div>
+			<center><input type="submit" value="Save Update" class="btn btn-primary"></center>
+		</form>
+	</div>
+</body>

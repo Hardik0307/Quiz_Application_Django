@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Master_profile</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container">
+
+         <div class="jumbotron">
+         	<center style="font-size: x-large;">Welcome Quiz_Master   <span class="badge badge-pill badge-info">{{request.session.user}}</span></center>
+         	<span style="float: right;" class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Logout from system">
+         		<a class="btn btn-info" href="/logout/">Logout</a>
+         	</span>
+         </div>
+         <div class="alert alert-info" style=" font-size:x-large; text-align: center; font-family: cursive;">Utilities(CRUD)</div>
+        {% if Success%} <div class="alert alert-success">CRUD SUCCESS... </div>
+		{% else %}<div class="alert alert-info">CRUD STATUS : None</div>
+        {% endif %}	
+         <table class="table table-hover table-dark">
+         	<tr class="table-active">
+         		<td>Create Quiz add Questions & Upload... <a style="float: right;" href="/../quiz_master/generate_quiz/" class="btn btn-primary">GENERATE Quiz</a></td>
+         	</tr>
+         	<tr class="table-active">
+                <td>Select Category to See...   	
+         		<form action="/../quiz_master/display_que/" method="POST">{% csrf_token %}
+                <div style="float: right;"> <select  name="Category" required>
+                                <option value="Select">-------</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Health">Health</option>
+                                <option value="CS">Computer science</option>
+                                <option value="Mix">Mix</option>
+                </select>   
+               <input type="submit" value="See Question" class="btn btn-primary"/></div>   
+                </div></td>
+            </form>
+         	</tr>
+         	<tr class="table-active">
+                <form action="/../quiz_master/ask_delete_que/" method="POST">{% csrf_token %}
+         		<td>Select Category to Delete... <div style="float: right;">
+                <select  name="Category" required>
+                                <option value="Select">-------</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Health">Health</option>
+                                <option value="CS">Computer science</option>
+                                <option value="Mix">Mix</option>
+                </select>
+               <input type="submit" value="DELETE" class="btn btn-primary"/></div>   
+                </td>
+            </form>
+         	</tr>
+         	<tr class="table-active">
+         	      <form action="/../quiz_master/ask_update_que/" method="POST">{% csrf_token %}
+                    <td>Select Category to Update... <div style="float: right;">
+                    <select  name="Category" required>
+                                <option value="Select">-------</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Health">Health</option>
+                                <option value="CS">Computer science</option>
+                                <option value="Mix">Mix</option>
+                    </select>
+                    <input type="submit" value="Update Questions" class="btn btn-primary"/></div>   
+                    </td>
+                </form>
+         	</tr>
+         </table>
+    </div>      
+</body>
+</html>

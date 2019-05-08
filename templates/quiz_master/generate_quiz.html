@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Generate_Quiz</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+	<body>
+		<div class="container">
+			<div class="alert alert-info" role="info" style="font-size: xx-large; text-align: center;">GO for it</div>
+			{% if label %}	
+					<form action="/../quiz_master/submit_quiz/" method="POST">{% csrf_token %}
+						<table class="table table-hover">
+						{% for i in list %}
+							<tr><td><span class="label label-success">QUESTION {{i}} </span> <textarea class="form-control" name="que{{i}}" rows="3" cols="4" id="comment" required></textarea></td>
+								<td>
+									OPTION <span class="label label-info"> 1</span> : <input type="text" name="op1{{i}}" required /><br>
+									OPTION <span class="label label-info">2 </span>: <input type="text" name="op2{{i}}" required /><br>
+									OPTION <span class="label label-info"> 3 </span>: <input type="text" name="op3{{i}}" required /><br>
+									OPTION <span class="label label-info"> 4 </span>: <input type="text" name="op4{{i}}" required /><br><br>
+									ANSWER:     <input  type="text" name="ans{{i}}" required><br>
+									Weight :  <input type="text" name="weight{{i}}">
+
+								</td>
+						{% endfor%}	
+						<tr><td colspan="2"><center><input type="submit" name="sub1" class="btn btn-primary" value="Submit Questions"></center></td></tr>
+					</table>
+					</form>	
+
+
+
+			{% else %}
+				<form action="/../quiz_master/ask_que_cat/" method="POST">{% csrf_token %}
+					<table class="table table-hover table-bordered">
+						<tr>
+							<td colspan="2">Enter 10 questions,We expect right content from you,Thanks.</td>
+							<!--<td><input type="number" name="quantity" min="1" max="10" required></td>-->
+						</tr>
+						<tr>
+							<td>Which Type of Questions(Category)?</td>
+							<td><select class="form-control" name="Category" required>
+								<option value="Select">-------</option>
+								<option value="Sports">Sports</option>
+								<option value="Health">Health</option>
+								<option value="CS">Computer science</option>
+								<option value="Mix">Mix</option>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Enter Unique Quiz id/Name:<br>NOTE : CategoryNumber,ex Health03<br>
+							For quiz number refer display quiz</td>
+							<td><input type="text" name="quiz_id" required></td>
+						</tr>
+						<tr>
+							<td colspan="2"><center><input type="submit" class="btn btn-primary" name="sub" value="Go"/></center></td>
+						</tr>
+					</table>
+				</form>
+			{% endif %}
+		</div>
+	</body>
+</html>

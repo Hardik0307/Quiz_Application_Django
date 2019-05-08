@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ask_Delete</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container">
+		<div style="font-size: x-large; text-align: center;" class="alert alert-info">Delete Questions</div>
+		<div class="well"><h4>
+		<form action="/../quiz_master/delete_que/" method="POST">{% csrf_token 	%}
+		
+			{% for items in Que_cat1 %}
+					<u>Question</u> : {{items.question}} <div style="float: right"><input type="checkbox" name="sel" value="{{items.question}}"></div><br><br>
+					<span class="label label-info"> A) </span> {{items.op1}}
+					<span class="label label-info"> B) </span> {{items.op2}}
+					<span class="label label-info"> C) </span> {{items.op3}}
+					<span class="label label-info"> D) </span> {{items.op4}}<hr/>
+			{% endfor %}	
+					</h4></div>
+					<center><input type="submit" class="btn btn-primary" value="Delete securely"></center>
+		</form>		
+		
+	</div>
+</body>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QUIZ</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+	<body>
+		<div class="container">
+			<div class="alert alert-info">
+				<h2 style="text-align: center;"> {{request.session.cat}} Category</h2>
+				<p><center><img src="{% static 'quiz.png' %}" height="200px"></center></p>
+			</div>
+			{% if flag %}
+				<h1>You have already played this quiz your points is::
+					<span class="alert alert-success">{{Que.quiz_points}}/20</span></h1>
+					
+			{% else %}
+			<div class="well">
+				<form action="/../Player/submit/" method="POST">{% csrf_token %}
+				<h4><span class="alert alert-success">1) {{Que.0.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.0.weightage}} point</span>
+				</div><br><br>
+				<span style="padding-left: 50px">A) {{Que.0.op1}} <input type="radio" name="0" value="{{Que.0.op1}}"> </span><br/>
+				<span style="padding-left: 50px">B) {{Que.0.op2}} <input type="radio" name="0" value="{{Que.0.op2}}"></span><br/>
+				<span style="padding-left: 50px">C) {{Que.0.op3}} <input type="radio" name="0" value="{{Que.0.op3}}"></span> <br>
+				<span style="padding-left: 50px">D) {{Que.0.op4}} <input type="radio" name="0" value="{{Que.0.op4}}"></span>
+				</h4>
+
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">2) {{Que.1.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.1.weightage}} point</span>
+				</div><br><br>
+				<span style="padding-left: 50px">A) {{Que.1.op1}} <input type="radio" name="1" value="{{Que.1.op1}}"></span><br>
+				<span style="padding-left: 50px">B) {{Que.1.op2}} <input type="radio" name="1" value="{{Que.1.op2}}"></span><br/> 
+				<span style="padding-left: 50px">C) {{Que.1.op3}} <input type="radio" name="1" value="{{Que.1.op3}}"> </span><br>
+				<span style="padding-left: 50px">D) {{Que.1.op4}} <input type="radio" name="1" value="{{Que.1.op4}}"></span> 
+				</h4>
+
+			</div>
+
+			<div class="well">	
+				<h4><span class="alert alert-success">3) {{Que.2.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.2.weightage}} point</span>
+				</div><br><br>	
+				<span style="padding-left: 50px">A) {{Que.2.op1}} <input type="radio" name="2" value="{{Que.2.op1}}"> </span><br>
+				<span style="padding-left: 50px">B) {{Que.2.op2}} <input type="radio" name="2" value="{{Que.2.op2}}"></span><br/> 
+				<span style="padding-left: 50px">C) {{Que.2.op3}} <input type="radio" name="2" value="{{Que.2.op3}}"></span> <br>
+				<span style="padding-left: 50px">D) {{Que.2.op4}} <input type="radio" name="2" value="{{Que.2.op4}}"> </span></h4>
+
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">4) {{Que.3.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.3.weightage}} point</span>
+				</div><br><br>	
+				<span style="padding-left: 50px">A) {{Que.3.op1}} <input type="radio" name="3" value="{{Que.3.op1}}"> </span><br>
+				<span style="padding-left: 50px">B) {{Que.3.op2}} <input type="radio" name="3" value="{{Que.3.op2}}"></span><br/> 
+				<span style="padding-left: 50px">C) {{Que.3.op3}} <input type="radio" name="3" value="{{Que.3.op3}}"> </span><br>
+				<span style="padding-left: 50px">D) {{Que.3.op4}} <input type="radio" name="3" value="{{Que.3.op4}}"> </span>
+			</h4>
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">5) {{Que.4.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.4.weightage}} points</span>
+				</div><br><br>	
+				<span style="padding-left: 50px">A) {{Que.4.op1}} <input type="radio" name="4" value="<br>{{Que.4.op1}}"></span><br> 
+			<span style="padding-left: 50px">B) {{Que.4.op2}} <input type="radio" name="4" value="{{Que.4.op2}}"> </span><br/>
+				<span style="padding-left: 50px">C) {{Que.4.op3}} <input type="radio" name="4" value="{{Que.4.op3}}"></span> <br>
+				<span style="padding-left: 50px">D) {{Que.4.op4}} <input type="radio" name="4" value="{{Que.4.op4}}"></span>
+				</h4>
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">6) {{Que.5.question}}</span>
+				<br><div style="float: right;">
+			<span class="badge badge-pill"> Weight : {{Que.5.weightage}} points</span>
+				</div><br><br>		
+				<span style="padding-left: 50px">A) {{Que.5.op1}} <input type="radio" name="5" value="{{Que.5.op1}}"> </span><br>
+				<spa style="padding-left: 50px">B) {{Que.5.op2}} <input type="radio" name="5" value="{{Que.5.op2}}"></span><br> 
+				<span style="padding-left: 50px">C) {{Que.5.op3}} <input type="radio" name="5" value="{{Que.5.op3}}"> </span><br>
+				<span style="padding-left: 50px">D) {{Que.5.op4}} <input type="radio" name="5" value="{{Que.5.op4}}"> </span>
+			</h4>
+
+			</div>
+			<div class="well">	
+				<h4><br><span class="alert alert-success">7) {{Que.6.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.6.weightage}} points</span>
+				</div><br><br>		
+				<span style="padding-left: 50px">A) {{Que.6.op1}} <input type="radio" name="6" value="{{Que.6.p1}}"></span><br> 
+				<span style="padding-left: 50px">B) {{Que.6.op2}} <input type="radio" name="6" value="{{Que.6.op2}}"></span><br/> 
+				<span style="padding-left: 50px">C) {{Que.6.op3}} <input type="radio" name="6" value="{{Que.6.op3}}"></span> <br>
+				<span style="padding-left: 50px">D) {{Que.6.op4}} <input type="radio" name="6" value="{{Que.6.op4}}"></span> </h4>
+
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">8) {{Que.7.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.7.weightage}} points</span>
+				</div><br><br>		
+				<span style="padding-left: 50px">A) {{Que.7.op1}} <input type="radio" name="7" value="{{Que.7.op1}}"> </span><br>
+				<span style="padding-left: 50px">B) {{Que.7.op2}} <input type="radio" name="7" value="{{Que.7.op2}}"></span><br/> 
+				<span style="padding-left: 50px">C) {{Que.7.op3}} <input type="radio" name="7" value="{{Que.7.op3}}"> </span><br>
+				<span style="padding-left: 50px">D) {{Que.7.op4}} <input type="radio" name="7" value="{{Que.7.op4}}"></span> </h4>
+
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">9) {{Que.8.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.8.weightage}} points</span>
+				</div><br><br>		
+				<span style="padding-left: 50px">A) {{Que.8.op1}} <input type="radio" name="8" value="{{Que.8.op1}}"></span> <br>
+				<span style="padding-left: 50px">B) {{Que.8.op2}} <input type="radio" name="8" value="{{Que.8.op2}}"></span><br> 
+				<span style="padding-left: 50px">C) {{Que.8.op3}} <input type="radio" name="8" value="{{Que.8.op3}}"></span> <br>
+				<span style="padding-left: 50px">D) {{Que.8.op4}} <input type="radio" name="8" value="{{Que.8.op4}}"> </span></h4>
+
+			</div>
+			<div class="well">	
+				<h4><span class="alert alert-success">10) {{Que.9.question}}</span>
+				<div style="float: right;">
+				<span class="badge badge-pill"> Weight : {{Que.9.weightage}} points</span>
+				</div><br><br>		
+				<span style="padding-left: 50px">A) {{Que.9.op1}} <input type="radio" name="9" value="{{Que.9.op1}}"> </span><br>
+				<span style="padding-left: 50px">B) {{Que.9.op2}} <input type="radio" name="9" value="{{Que.9.op2}}"></span><br> 
+				<span style="padding-left: 50px">C) {{Que.9.op3}} <input type="radio" name="9" value="{{Que.9.op3}}"></span> <br>
+				<span style="padding-left: 50px">D) {{Que.9.op4}} <input type="radio" name="9" value="{{Que.9.op4}}"></span></h4>
+
+			</div>
+			<p><center><input class="btn btn-primary" type="submit" value="Submit Quiz"></center></p>
+		</form>
+			{% endif %}		
+		</div>
+	</body>
+</html>

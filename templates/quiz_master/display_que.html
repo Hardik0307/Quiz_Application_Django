@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Display_Que</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+	<body>
+		<div class="container">
+			<div class="well">
+				<span class="glyphicon glyphicon-record"></span>
+				{% for items in Que_cat1 %}
+				<div>
+					Question :<h4><u> {{items.question}} </h4></u> <br>
+					<h4>Quiz_id : {{items.quiz_id}}</h4><br><br>
+					A) <span class="alert alert-info">{{items.op1}}</span>
+					B) <span class="alert alert-info">{{items.op2}}</span>
+					C) <span class="alert alert-info">{{items.op3}}</span>
+					D) <span class="alert alert-info">{{items.op4}}</span><br><br>
+					<div class="alert alert-success">Answer : {{items.ans}}</div>
+					<div class="alert alert-success">Weight : {{items.weightage}}</div>
+
+					<hr>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>			

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+<!--	<link rel="stylesheet" type="text/javascript" href="{% static 'js/bootstrap.min.js' %}" >-->
+
+</head>
+<body>
+	<nav class="navbar sticky-top navbar-light bg-light">
+  		<a class="navbar-brand" href="#">
+    			<img src="{% static 'symbol.png' %}" width="70" height="70" alt="">
+  		</a>
+  		 <ul class="nav navbar-nav navbar-right" >
+      <li style="padding-right: 35px;"><a href="/signup_page/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li style="padding-right: 35px;"><a href="/login_redirect/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+</nav>
+
+
+		{% block content %}
+
+		{% endblock %}<div style="margin-top: 420px;"> 
+<footer class="page-footer font-large blue pt-4" style="padding-top: 10px;background-color: dodgerblue ">
+<div class="footer-copyright text-center py-4">© 2019 Copyright:
+  Quiz
+    </div>
+</footer>
+</div>
+</body>
+</html>    

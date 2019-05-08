@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Play_area</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+				<a href="#"><span class="glyphicon glyphicon-th-list" style="font-size: x-large;"></a> Select Category and Play Quiz!!</span>
+				<div style="float: right;"><a href="/logout/" class="btn btn-success">Logout</a>
+				</div>
+		</div>	
+				<table class="table table-hover">
+					{% for items in l%}
+						<tr>
+							<td>{{items}}<div style="float: right">
+								<a href="/../Player/cat_dis_quiz?value={{items}}" class="btn btn-primary">Go</a>
+								</div></td>
+						</tr>
+					{% endfor %}
+				</table>
+				#CS - Computer Science
+</body>

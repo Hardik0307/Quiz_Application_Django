@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load staticfiles%}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container">
+		<center><a href="/../Player/profile/" class="btn btn-info">Go Back</a><br><br>
+				<a href="/logout/" class="btn btn-info">Logout</a>
+		</center>
+		<div style="padding-top: 100px; align-content: center;">
+		<div class="well">
+			<h2>Quiz for {{Cat}} Category</h2>
+			<div style="float: right;">
+				<span class="label label-success">NO TIME LIMIT </span><br/>
+				<span class="label label-success">TOTAL MARKS: 20 marks </span>	
+			</div>
+			</div>	
+			<div style="font-size: x-large;" class="well">
+				<strong><span class="alert alert-success">Rules</span></strong>
+				<div class="list-group">
+  				<button type="button" class="list-group-item list-group-item-action ">
+  				<span class="glyphicon  glyphicon-screenshot"></span>	Once click on "Play",Player can't quit. 
+  				</button>
+  				<button type="button" class="list-group-item list-group-item-action">
+  				<span class="glyphicon  glyphicon-screenshot"></span> Quiz consist of 10 Questions.</button>
+  				<button type="button" class="list-group-item list-group-item-action">
+  					<span class="glyphicon  glyphicon-screenshot"></span> Weightage of  Questions:Easy, Medium & Hard(as per)<br>
+  					<span class="glyphicon glyphicon-hand-right"></span> 1 - 4 <span class="badge">1 marks</span><br>
+  					<span class="glyphicon glyphicon-hand-right"></span> 5 - 7 <span class="badge">2 marks</span><br>
+  					<span class="glyphicon glyphicon-hand-right"></span> 8 - 9 <span class="badge">3 marks</span><br>
+  					<span class="glyphicon glyphicon-hand-right"></span> 10   <span class="badge">4 marks</span><br>
+  				</button>
+  				<form action="/../Player/quiz_play/">{% csrf_token %}
+  					<center><input type="submit"  class="btn btn-success" value="Play"/></center>
+  				</form>
+
+</div>
+			</div>	
+	</div>
+</body>
+</html>
